@@ -1,7 +1,10 @@
 def clear():
     import os
     os.system('cls' if os.name == 'nt' else 'clear')
-while True:
+
+loop = True
+
+while loop:
     print("-" * 50)
     print("calculator".center(50))
     print("-" * 50)
@@ -39,7 +42,11 @@ while True:
         try:
             answer = num1 / num2
         except ZeroDivisionError:
-            print("Denominator cannot be Zero, Please try again")
+            choice = input("\nDo you want to continue? (y/n): ").lower()
+
+        if choice != 'y':
+            running = False
+            print("Goodbye!")
             continue
     else:
         print("invalid operation\n")
